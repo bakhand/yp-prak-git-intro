@@ -85,3 +85,22 @@ git log
 Это служебный файл в папке .git, в котором хранится ссылка на файл с хэшем последнего коммита.
 Можно использовать как синоним последнего коммита.
 
+### Жизненный цикл файла
+
+Возможные статусы:
+- untracked
+- tracked/staged
+- tracked/modified
+
+Команда гит статус дает советы по поводу того, в какое состояние можно перевести файл и как.
+
+```mermaid
+graph LR
+    untracked -- "git add" --> tracked/staged;
+    tracked/staged -- "git commit" --> tracked/commited;
+    modified -- "git add" --> tracked/staged;
+    tracked/staged -- "Изменения" --> modified;
+    tracked/commited -- "Изменения" --> modified;
+```
+
+
